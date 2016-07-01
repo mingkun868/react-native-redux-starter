@@ -30,6 +30,13 @@ class TodoList extends Component {
   }
 
   render() {
+    if (this.props.list.length == 0) {
+      return (
+        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+          <Text>没有数据</Text>
+        </View>
+      );
+    }
     return (
       <ListView
         style={{flex:1, marginTop:20}}
@@ -43,7 +50,7 @@ class TodoList extends Component {
   _renderRow(rowData, sectionID, rowID) {
     console.log('ListView renderRow:' + sectionID + '_' + rowID);
     return (
-      <View style={{justifyContent:'center', backgroundColor:'#EFEFEF', margin:3, padding:5, borderRadius:2}}>
+      <View style={{justifyContent:'center', backgroundColor:'#EFEFEF', margin:3, marginTop:0, padding:5, borderRadius:2}}>
         <Text style={{marginLeft:10}}>section:{sectionID}, row:{rowID}, text:{rowData}</Text>
       </View>
     );
